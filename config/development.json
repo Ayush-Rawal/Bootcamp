@@ -1,0 +1,7 @@
+{
+    "port": 8080,
+    "URI": "localhost",
+    "dbPort": 27017,
+    "dbName": "bootcamp",
+    "dbURI": "mongodb://localhost"
+}
