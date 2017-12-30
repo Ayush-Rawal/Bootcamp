@@ -9,21 +9,26 @@
         "classnames": "^2.2.5",
         "config": "^1.29.0",
         "cors": "^2.8.4",
+        "deep-freeze": "0.0.1",
         "express": "^4.16.2",
+        "jest": "^22.0.4",
         "mongoose": "^4.13.8",
         "passport": "^0.4.0",
         "passport-facebook": "^2.1.1",
         "passport-local": "^1.0.0",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
+        "react-redux": "^5.0.6",
         "react-router": "^4.2.0",
         "react-scripts": "1.0.17",
+        "redux": "^3.7.2",
         "socket.io": "^2.0.4"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
+        "test_orig": "react-scripts test --env=jsdom",
+        "test": "jest",
         "eject": "react-scripts eject"
     }
 }

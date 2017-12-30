@@ -12,14 +12,14 @@ const dbPort = conf.get('dbPort');
 const dbName = conf.get('dbName');
 const dbURL = `${conf.get('dbURI')}:${dbPort}/${dbName}`;
 
-app.use(cors())
-    // mongoose.connect(dbURL);
+app.use(cors());
+mongoose.connect(dbURL);
 console.log(dbURL);
 const db = mongoose.connection
 
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(express.static('build'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 function spawnNotification(body, icon, title) {
     const options = {
