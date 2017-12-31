@@ -1,0 +1,4 @@
+const weather = (state = [], action) => {
+
+
+}
