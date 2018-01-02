@@ -1,23 +1,30 @@
-const refresh = 'refresh';
-const changeCity = 'changeCity';
-const changeStatus = 'changeStatus'
+export const REFRESH = 'REFRESH';
+export const CHANGECITY = 'CHANGECITY';
+export const CHANGESTATUS = 'CHANGESTATUS'
+export const UPDATED = 'UPDATED'
 
 export function refresh() {
     return {
-        type: refresh
+        type: REFRESH
+    }
+}
+
+export function updated() {
+    return {
+        type: UPDATED
     }
 }
 
 export function changeCity(city) {
     return {
-        type: changeCity,
+        type: CHANGECITY,
         city
     }
 }
 
 export function changeStatus(status) {
     return {
-        type: changeStatus,
+        type: CHANGESTATUS,
         status
     }
 }

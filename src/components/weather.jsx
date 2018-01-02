@@ -1,34 +1,36 @@
-import React from 'react'
+import React,{PureComponent} from 'react'
 import PropTypes from 'prop-types'
-import {OpenWeatherMap} from 'react-weather'
 
-// const fs = require('fs');
-
-const APIKEY = '2f93cf2121be130f065ac078017c2a52';
-const weatherURL = `http:api.openweathermap.org/data/2.5/weather?id=${cityID}`
-
-function findID(name) {
-     return fs.readFile('./weather.city.filtered.json', 'utf-8', (err, data) => {
-        if (err) throw new Error('Could not read weather file');
-        data = JSON.parse(data)
-        return data.filter(city => city.name === name).id;
-	});
-}
-
-const getWeather = city {
-    city = city.toLowerCase();
-    const cityID = findID(city);
-    axios.get(weatherURL)
-        .then(function(response) {
-			<
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
+class Weather extends PureComponent{
+	render(){
+		return(
+			<span>
+				<div className ="btn-group" >
+					<button className = "btn btn-light">
+						Change City
+					</button>
+					<button className="btn" >
+						<i className="fa fa-refresh" aria-hidden="true"></i>
+					</button>
+					<span className="btn-group btn-group-toggle" >
+					<label className="btn active"><input type="radio" name="temp" id="celsius" autoComplete="off" checked/>C </label>
+					<label className="btn"><input type="radio" name="temp" id="Fahrenheit" autoComplete="off"/>F </label>
+					</span>
+				</div>
+				<div>
+					<i className="fa fa-sun-o"></i>
+					<i className="fa fa-cloud"></i>
+					<i className="fa fa-tint"></i> {/* For Rain */}
+				</div>
+			</span>
+		);
+	}
 }
 
 Weather.propTypes = {
-	city:PropTypes.string.isRequired
+	city:PropTypes.string.isRequired,
+	temp:PropTypes.number.isRequired,
+	status:PropTypes.string
 }
 
 export default Weather

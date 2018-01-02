@@ -1,0 +1,29 @@
+{
+    "currPage": null,
+    "totalPages": null,
+    "weather": {
+        "fullweather": {},
+        "weather": {
+            "city": null,
+            "temp": null,
+            "status": null
+        },
+        "celsius": true,
+        "lastUpdated": null,
+        "isFetching": null,
+        "APIKEY": "2f93cf2121be130f065ac078017c2a52"
+    },
+    "calculator": {
+        "input": null,
+        "result": null
+    },
+    "converse": {
+        "currConv": null,
+        "conversations": [],
+        "messages": [{
+            "text": null,
+            "sender": null,
+            "date": null
+        }]
+    }
+}
