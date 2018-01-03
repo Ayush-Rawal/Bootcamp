@@ -1,8 +1,32 @@
 import React,{PureComponent} from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import fetchLoader from '../images/ball-triangle.svg'
 
 class Weather extends PureComponent{
 	render(){
+		
+		const statusClasses = classNames({
+			'fa':true,
+			'fa-5x':true,
+			'fa-cloud':this.props.status==='cloud',
+			'fa-tint':this.props.status==='rain',
+			'fa-sun':this.props.status!=='rain' && this.props.status!=='cloud'
+		})
+
+		const celsiusClasses = classNames({
+			'btn':true,
+			'btn-light':true,
+			'btn-lg':true,
+			'active':this.props.tempFormat==='celsius'
+		})
+		const fahrenheitClasses = classNames({
+			'btn':true,
+			'btn-lg':true,
+			'btn-light':true,
+			'active':this.props.tempFormat==='fahrenheit'
+		})
+
 		return(
 			<span>
 				<div className ="btn-group" >
@@ -10,18 +34,22 @@ class Weather extends PureComponent{
 						Change City
 					</button>
 					<button className="btn" >
-						<i className="fa fa-refresh" aria-hidden="true"></i>
+						<i className="fa fa-refresh fa-1x" aria-hidden="true"></i>
 					</button>
-					<span className="btn-group btn-group-toggle" >
-					<label className="btn active"><input type="radio" name="temp" id="celsius" autoComplete="off" checked/>C </label>
-					<label className="btn"><input type="radio" name="temp" id="Fahrenheit" autoComplete="off"/>F </label>
+					<span className="btn-group btn-group-toggle" data-toggle="buttons" >
+					<label className={celsiusClasses}><input type="radio" name="temp" id="celsius" autoComplete="off" defaultChecked/> C </label>
+					<label className={fahrenheitClasses}><input type="radio" name="temp" id="Fahrenheit" autoComplete="off"/> F </label>
 					</span>
 				</div>
-				<div>
-					<i className="fa fa-sun-o"></i>
-					<i className="fa fa-cloud"></i>
-					<i className="fa fa-tint"></i> {/* For Rain */}
-				</div>
+				{!this.props.isFetching && <div>
+					<span>
+						<p>{this.props.temp}</p>
+					</span>
+					<i className={statusClasses}></i>
+				</div>}
+				{this.props.isFetching && <div>
+					<img src={fetchLoader} alt="spinner" ></img>
+				</div>}
 			</span>
 		);
 	}
@@ -30,7 +58,8 @@ class Weather extends PureComponent{
 Weather.propTypes = {
 	city:PropTypes.string.isRequired,
 	temp:PropTypes.number.isRequired,
-	status:PropTypes.string
+	status:PropTypes.string,
+	tempFormat:PropTypes.string
 }
 
 export default Weather

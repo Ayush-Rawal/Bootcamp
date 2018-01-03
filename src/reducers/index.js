@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-const bootcamp = combineReducers({
+const rootRed = combineReducers({
 
 });
 
-export default bootcamp;
+export default rootRed;

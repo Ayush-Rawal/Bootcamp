@@ -2,6 +2,7 @@ export const REFRESH = 'REFRESH';
 export const CHANGECITY = 'CHANGECITY';
 export const CHANGESTATUS = 'CHANGESTATUS'
 export const UPDATED = 'UPDATED'
+export const CHANGETEMPFORMAT = 'CHANGETEMPFORMAT'
 
 export function refresh() {
     return {
@@ -26,5 +27,12 @@ export function changeStatus(status) {
     return {
         type: CHANGESTATUS,
         status
+    }
+}
+
+export function changeTempFormat(format = 'celsius') {
+    return {
+        type: CHANGETEMPFORMAT,
+        format
     }
 }
