@@ -1,6 +1,6 @@
 import { REFRESH, UPDATED, CHANGEWEATHER, CHANGETEMPFORMAT, CHANGECITY, ISCHANGINGCITY, SETINPUTVALUE } from '../actions/weather.act.js'
 
-const weather = (state = [], action) => {
+export const weather = (state = [], action) => {
     switch (action.type) {
         case REFRESH:
             return (Object.assign({}, state, {

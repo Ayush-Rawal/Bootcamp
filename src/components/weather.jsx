@@ -28,7 +28,7 @@ class Weather extends PureComponent{
 
 		return(
 			<span>
-				<div className ="btn-group" >
+				<div className ="btn-group" style={{'background-color':'grey'}} >
 					<button className = "btn btn-light" onClick={this.props.handleCityChange} >
 						Change City
 					</button>
@@ -36,13 +36,13 @@ class Weather extends PureComponent{
 						<i className="fa fa-refresh fa-1x" aria-hidden="true"></i>
 					</button>
 					<span className="btn-group btn-group-toggle" data-toggle="buttons" >
-					<label className={celsiusClasses} onClick={handleCelsiusChange} ><input type="radio" name="temp" id="celsius" autoComplete="off" defaultChecked/> C </label>
-					<label className={fahrenheitClasses} onClick={handleFahrenheitChange} ><input type="radio" name="temp" id="Fahrenheit" autoComplete="off"/> F </label>
+					<label className={celsiusClasses} onClick={this.props.handleCelsiusChange} ><input type="radio" name="temp" id="celsius" autoComplete="off" defaultChecked/> C </label>
+					<label className={fahrenheitClasses} onClick={this.props.handleFahrenheitChange} ><input type="radio" name="temp" id="Fahrenheit" autoComplete="off"/> F </label>
 					</span>
 				</div>
 				{!this.props.isFetching && <div>
 					<span>
-						<p>{this.props.temp}</p>
+						<p>Temperature: {this.props.temp}</p>
 					</span>
 					<i className={statusClasses}></i>
 				</div>}
@@ -51,8 +51,8 @@ class Weather extends PureComponent{
 				</div>}
 				{this.props.isChangingCity && <div>
 					<div className="btn-group row">
-						<input type="text" onChange={} className="col-md-8" onKeyUp={}/>
-						<button type="submit" onClick={} className="btn btn-success">Submit</button>
+						<input type="text" onChange={this.props.handleCityInputChange} onKeyUp={this.props.handleCityKey} className="col-md-8" />
+						<button type="submit" onClick={this.props.handleCityClick} className="btn btn-success">Submit</button>
 					</div>	
 				</div>}
 			</span>

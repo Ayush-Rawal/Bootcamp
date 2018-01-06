@@ -1,3 +1,8 @@
+import axios from 'axios'
+import { store } from '../index'
+const fs = require('fs')
+
+
 export const REFRESH = 'REFRESH';
 export const CHANGEWEATHER = 'CHANGECITY';
 export const UPDATED = 'UPDATED';
@@ -52,7 +57,7 @@ export const setInpVal = (inpVal) => ({
 })
 
 export const getWeather = () => (dispatch) => {
-    let cityID = findID(srote.getState().weather.weather.city.toLowerCase());
+    let cityID = findCityID(store.getState().weather.weather.city.toLowerCase());
     return axios.get(`api.openweathermap.org/data/2.5/weather?id=${cityID}`)
         .then(function(response) {
             dispatch(updated(response));
