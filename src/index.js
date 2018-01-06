@@ -16,11 +16,13 @@ const preState = {
         "weather": {
             "city": null,
             "temp": null,
-            "status": null
+            "status": sun
         },
         "format": 'celsius',
         "lastUpdated": null,
-        "isFetching": null,
+        "isFetching": false,
+        "ISCHANGINGCITY": true,
+        "inpVal": "",
         "APIKEY": "2f93cf2121be130f065ac078017c2a52"
     },
     "calculator": {

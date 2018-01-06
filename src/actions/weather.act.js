@@ -3,6 +3,8 @@ export const CHANGEWEATHER = 'CHANGECITY';
 export const UPDATED = 'UPDATED';
 export const CHANGETEMPFORMAT = 'CHANGETEMPFORMAT';
 export const CHANGECITY = 'CHANGECITY';
+export const ISCHANGINGCITY = 'ISCHANGINGCITY'
+export const SETINPUTVALUE = 'SETINPUTVALUE'
 
 function findCityID(name) {
     return fs.readFile('./weather.city.filtered.json', 'utf-8', (err, data) => {
@@ -21,8 +23,15 @@ export const changeCity = (city) => ({
     city
 });
 
-export const updated = () => ({
-    type: UPDATED
+export const updated = (response) => ({
+    type: UPDATED,
+    date: Date.now(),
+    response
+})
+
+export const isChangingCity = (val) => ({
+    type: ISCHANGINGCITY,
+    val
 })
 
 export const changeWeather = (city, temp, status) => ({
@@ -37,11 +46,16 @@ export const changeTempFormat = (format = 'celsius') => ({
     format
 });
 
+export const setInpVal = (inpVal) => ({
+    type: SETINPUTVALUE,
+    inpVal
+})
+
 export const getWeather = () => (dispatch) => {
-    let cityID = findID(city.toLowerCase);
+    let cityID = findID(srote.getState().weather.weather.city.toLowerCase());
     return axios.get(`api.openweathermap.org/data/2.5/weather?id=${cityID}`)
         .then(function(response) {
-            dispatch(updated());
+            dispatch(updated(response));
         })
         // .catch(function(error) {
         //     throw new Error('Error getting data');
