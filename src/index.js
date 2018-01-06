@@ -18,7 +18,7 @@ const preState = {
             "temp": null,
             "status": null
         },
-        "celsius": true,
+        "format": 'celsius',
         "lastUpdated": null,
         "isFetching": null,
         "APIKEY": "2f93cf2121be130f065ac078017c2a52"

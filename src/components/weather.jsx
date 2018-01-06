@@ -5,7 +5,6 @@ import fetchLoader from '../images/ball-triangle.svg'
 
 class Weather extends PureComponent{
 	render(){
-		
 		const statusClasses = classNames({
 			'fa':true,
 			'fa-5x':true,
@@ -30,15 +29,15 @@ class Weather extends PureComponent{
 		return(
 			<span>
 				<div className ="btn-group" >
-					<button className = "btn btn-light">
+					<button className = "btn btn-light" onClick={this.props.handleCityChange} >
 						Change City
 					</button>
-					<button className="btn" >
+					<button className="btn" onClick={this.props.handleRefresh} >
 						<i className="fa fa-refresh fa-1x" aria-hidden="true"></i>
 					</button>
 					<span className="btn-group btn-group-toggle" data-toggle="buttons" >
-					<label className={celsiusClasses}><input type="radio" name="temp" id="celsius" autoComplete="off" defaultChecked/> C </label>
-					<label className={fahrenheitClasses}><input type="radio" name="temp" id="Fahrenheit" autoComplete="off"/> F </label>
+					<label className={celsiusClasses} onClick={handleCelsiusChange} ><input type="radio" name="temp" id="celsius" autoComplete="off" defaultChecked/> C </label>
+					<label className={fahrenheitClasses} onClick={handleFahrenheitChange} ><input type="radio" name="temp" id="Fahrenheit" autoComplete="off"/> F </label>
 					</span>
 				</div>
 				{!this.props.isFetching && <div>
@@ -50,6 +49,12 @@ class Weather extends PureComponent{
 				{this.props.isFetching && <div>
 					<img src={fetchLoader} alt="spinner" ></img>
 				</div>}
+				{this.props.isChangingCity && <div>
+					<div className="btn-group row">
+						<input type="text" onChange={} className="col-md-8" onKeyUp={}/>
+						<button type="submit" onClick={} className="btn btn-success">Submit</button>
+					</div>	
+				</div>}
 			</span>
 		);
 	}
@@ -58,8 +63,17 @@ class Weather extends PureComponent{
 Weather.propTypes = {
 	city:PropTypes.string.isRequired,
 	temp:PropTypes.number.isRequired,
-	status:PropTypes.string,
-	tempFormat:PropTypes.string
+	status:PropTypes.string.isRequired,
+	tempFormat:PropTypes.string,
+	isFetching:PropTypes.bool,
+	isChangingCity:PropTypes.bool,
+	handleCityChange:PropTypes.func,
+    handleRefresh:PropTypes.func,
+    handleCelsiusChange:PropTypes.func,
+    handleFahrenheitChange:PropTypes.func,
+    handleCityClick:PropTypes.func,
+    handleCityKey:PropTypes.func,
+    handleCityInputChange:PropTypes.func
 }
 
 export default Weather
