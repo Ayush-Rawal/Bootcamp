@@ -7,8 +7,13 @@ import App from './App.jsx';
 import registerServiceWorker from './registerServiceWorker';
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware,compose } from 'redux'
 import {rootRed} from './reducers/index'
+import DevTools from './containers/DevTools'
+
+// To be removed after reducer is working
+import { combineReducers } from 'redux'
+import { weather } from './reducers/weather.red'
 
 const preState = {
     "currPage": null,
@@ -44,14 +49,14 @@ const preState = {
 
 const logger = createLogger();
 
-export const store = createStore(rootRed, preState, applyMiddleware(thunkMiddleware, logger));
+export const store = createStore(rootRed, preState, compose(applyMiddleware(thunkMiddleware, logger)),DevTools.instrument());
 
 console.log(store.getState());
 store.subscribe(() => console.log(store.getState()));
 
 render(
-    <Provider store = { store } >
-    <App/>
+    <Provider store = { store }>
+    <App store = {store}/>
     </Provider>,
     document.getElementById('root')
 );

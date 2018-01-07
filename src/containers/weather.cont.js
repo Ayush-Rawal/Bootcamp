@@ -1,7 +1,6 @@
 import { refresh, changeCity, updated, changeWeather, changeTempFormat, getWeather, isChangingCity, setInpVal } from '../actions/weather.act'
 import { connect } from 'react-redux'
-import { Weather } from '../components/weather'
-import { each } from '../../../../../Users/Ayush/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/async';
+// import { Weather } from '../components/weather'
 
 const mapStateToProps = (state) => ({
     status: state.weather.weather.status,
@@ -11,10 +10,10 @@ const mapStateToProps = (state) => ({
     isChangingCity: state.weather.isChangingCity
 })
 
-const mapDispatchToPorps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
     handleCityChange: () => dispatch(isChangingCity(true)),
     handleRefresh: () => {
-        dispatch(refresh());
+        // dispatch(refresh());
         return getWeather();
     },
     handleCelsiusChange = () => dispatch(changeTempFormat('celsius')),
@@ -29,6 +28,6 @@ const mapDispatchToPorps = (dispatch) => ({
     handleCityInputChange = (val) => dispatch(setInpVal(val)),
 })
 
-const weather = connect(mapStateToProps, mapDispatchToPorps)(Weather)
+const weather = connect(mapStateToProps, mapDispatchToProps)(Weather)
 
 export default weather
