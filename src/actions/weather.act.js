@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { store } from '../index'
+// import { store } from '../index'
 const fs = require('fs')
 
 
@@ -57,7 +57,8 @@ export const setInpVal = (inpVal) => ({
 })
 
 export const getWeather = () => (dispatch) => {
-    let cityID = findCityID(store.getState().weather.weather.city.toLowerCase());
+    // let cityID = findCityID(getState().weather.weather.city.toLowerCase());
+    let cityID = findCityID('jaipur');
     return axios.get(`api.openweathermap.org/data/2.5/weather?id=${cityID}`)
         .then(function(response) {
             dispatch(updated(response));

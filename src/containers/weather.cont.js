@@ -1,6 +1,6 @@
 import { refresh, changeCity, updated, changeWeather, changeTempFormat, getWeather, isChangingCity, setInpVal } from '../actions/weather.act'
 import { connect } from 'react-redux'
-// import { Weather } from '../components/weather'
+import Weather from '../components/weather'
 
 const mapStateToProps = (state) => ({
     status: state.weather.weather.status,
@@ -14,18 +14,19 @@ const mapDispatchToProps = (dispatch) => ({
     handleCityChange: () => dispatch(isChangingCity(true)),
     handleRefresh: () => {
         // dispatch(refresh());
-        return getWeather();
+        // return getWeather();
     },
-    handleCelsiusChange = () => dispatch(changeTempFormat('celsius')),
-    handleFahrenheitChange = () => dispatch(changeTempFormat('fahrenheit')),
-    handleCityClick = (city) => dispatch(changeCity(city)),
-    handleCityKey = (evt) => {
+    handleCelsiusChange: () => dispatch(changeTempFormat('celsius')),
+    handleFahrenheitChange: () => dispatch(changeTempFormat('fahrenheit')),
+    handleCityClick: (city) => dispatch(changeCity(city)),
+    handleCityKey: (evt) => {
         if (evt.key === 'Enter')
-            return dispatch(changeCity(store.getState().weather.inpVal))
+        // return dispatch(changeCity(store.getState().weather.inpVal))
+            return dispatch(changeCity('jaipur'))
         else if (evt.key === 'Escape')
             return dispatch(isChangingCity(false))
     },
-    handleCityInputChange = (val) => dispatch(setInpVal(val)),
+    handleCityInputChange: (val) => dispatch(setInpVal(val)),
 })
 
 const weather = connect(mapStateToProps, mapDispatchToProps)(Weather)

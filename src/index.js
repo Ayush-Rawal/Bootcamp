@@ -49,9 +49,12 @@ const preState = {
 
 const logger = createLogger();
 
-export const store = createStore(rootRed, preState, compose(applyMiddleware(thunkMiddleware, logger)),DevTools.instrument());
+const store = createStore(weather, preState, compose(applyMiddleware(thunkMiddleware, logger),DevTools.instrument()));
 
 console.log(store.getState());
+console.log(store.getState().weather);
+console.log(store.getState().weather.weather);
+
 store.subscribe(() => console.log(store.getState()));
 
 render(
